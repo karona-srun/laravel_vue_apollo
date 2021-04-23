@@ -1880,9 +1880,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Create",
@@ -1899,21 +1896,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    onEditorBlur: function onEditorBlur(quill) {
-      console.log('editor blur!', quill);
-    },
-    onEditorFocus: function onEditorFocus(quill) {
-      console.log('editor focus!', quill);
-    },
-    onEditorReady: function onEditorReady(quill) {
-      console.log('editor ready!', quill);
-    },
-    onEditorChange: function onEditorChange(_ref) {
-      var quill = _ref.quill,
-          html = _ref.html,
-          text = _ref.text;
-      console.log('editor change!', quill, html, text); // this.content = html
-    },
     createPost: function createPost() {
       var _this = this;
 
@@ -1932,9 +1914,6 @@ __webpack_require__.r(__webpack_exports__);
     editor: function editor() {
       return this.$refs.QuillEditor.quill;
     }
-  },
-  mounted: function mounted() {
-    console.log('this is current quill instance object', this.editor);
   }
 });
 
@@ -2000,9 +1979,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Edit",
@@ -2015,21 +1991,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   methods: {
-    onEditorBlur: function onEditorBlur(quill) {
-      console.log('editor blur!', quill);
-    },
-    onEditorFocus: function onEditorFocus(quill) {
-      console.log('editor focus!', quill);
-    },
-    onEditorReady: function onEditorReady(quill) {
-      console.log('editor ready!', quill);
-    },
-    onEditorChange: function onEditorChange(_ref) {
-      var quill = _ref.quill,
-          html = _ref.html,
-          text = _ref.text;
-      console.log('editor change!', quill, html, text); // this.content = html
-    },
     editPost: function editPost() {
       var _this = this;
 
@@ -2052,8 +2013,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(['post'])),
   mounted: function mounted() {
-    console.log('this is current quill instance object', this.editor);
-    this.$store.dispatch("getPostByID", parseInt(this.$route.params.id));
+    this.$store.dispatch("getPostByID", this.$route.params.id);
   }
 });
 
@@ -2199,7 +2159,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   name: "ShowPost",
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(["post"])),
   mounted: function mounted() {
-    this.$store.dispatch("getPostByID", parseInt(this.$route.params.id));
+    this.$store.dispatch("getPostByID", this.$route.params.id);
   }
 });
 
@@ -52192,17 +52152,6 @@ var render = function() {
                 _c("quill-editor", {
                   ref: "QuillEditor",
                   attrs: { options: _vm.editorOption },
-                  on: {
-                    blur: function($event) {
-                      return _vm.onEditorBlur($event)
-                    },
-                    focus: function($event) {
-                      return _vm.onEditorFocus($event)
-                    },
-                    ready: function($event) {
-                      return _vm.onEditorReady($event)
-                    }
-                  },
                   model: {
                     value: _vm.description,
                     callback: function($$v) {
@@ -52308,17 +52257,6 @@ var render = function() {
                 _c("quill-editor", {
                   ref: "QuillEditor",
                   attrs: { options: _vm.editorOption },
-                  on: {
-                    blur: function($event) {
-                      return _vm.onEditorBlur($event)
-                    },
-                    focus: function($event) {
-                      return _vm.onEditorFocus($event)
-                    },
-                    ready: function($event) {
-                      return _vm.onEditorReady($event)
-                    }
-                  },
                   model: {
                     value: _vm.post.description,
                     callback: function($$v) {

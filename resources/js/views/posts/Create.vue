@@ -20,9 +20,6 @@
             ref="QuillEditor"
             v-model="description"
             :options="editorOption"
-            @blur="onEditorBlur($event)"
-            @focus="onEditorFocus($event)"
-            @ready="onEditorReady($event)"
           />
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
@@ -53,19 +50,6 @@ export default {
       }
     },
     methods: {
-      onEditorBlur(quill) {
-        console.log('editor blur!', quill)
-      },
-      onEditorFocus(quill) {
-        console.log('editor focus!', quill)
-      },
-      onEditorReady(quill) {
-        console.log('editor ready!', quill)
-      },
-      onEditorChange({ quill, html, text }) {
-        console.log('editor change!', quill, html, text)
-        // this.content = html
-      },
       createPost(){
         let post = {
           title: this.title,
@@ -85,9 +69,6 @@ export default {
       editor() {
         return this.$refs.QuillEditor.quill
       }
-    },
-    mounted() {
-      console.log('this is current quill instance object', this.editor)
     }
 };
 </script>

@@ -28,7 +28,7 @@ export default {
     ...mapGetters(["post"]),
   },
   mounted() {
-    this.$store.dispatch("getPostByID", parseInt(this.$route.params.id));
+    this.$store.dispatch("getPostByID", this.$route.params.id);
   },
 };
 </script>

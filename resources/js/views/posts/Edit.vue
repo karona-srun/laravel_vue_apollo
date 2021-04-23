@@ -20,9 +20,6 @@
             ref="QuillEditor"
             :options="editorOption"
             v-model="post.description"
-            @blur="onEditorBlur($event)"
-            @focus="onEditorFocus($event)"
-            @ready="onEditorReady($event)"
           />
           </div>
           <div class="form-group">
@@ -57,19 +54,6 @@ export default {
       }
     },
     methods: {
-      onEditorBlur(quill) {
-        console.log('editor blur!', quill)
-      },
-      onEditorFocus(quill) {
-        console.log('editor focus!', quill)
-      },
-      onEditorReady(quill) {
-        console.log('editor ready!', quill)
-      },
-      onEditorChange({ quill, html, text }) {
-        console.log('editor change!', quill, html, text)
-        // this.content = html
-      },
       editPost(){
         let data = {
           id: parseInt(this.$route.params.id),
@@ -93,8 +77,7 @@ export default {
       ...mapGetters(['post'])
     },
     mounted() {
-      console.log('this is current quill instance object', this.editor)
-      this.$store.dispatch("getPostByID",parseInt(this.$route.params.id));
+      this.$store.dispatch("getPostByID",this.$route.params.id);
     }
 };
 </script>
