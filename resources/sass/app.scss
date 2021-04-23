@@ -1,0 +1,22 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+html
+body {
+    font-family: 'Roboto Mono', monospace;
+    padding: 1.5rem 1.5rem 2rem;
+    margin: 2rem 0;
+    position: relative;
+    z-index: 1;
+    background-color: #FFF;
+  }
+
+.quill-editor, p ,img{
+  width: 100%;
+}
