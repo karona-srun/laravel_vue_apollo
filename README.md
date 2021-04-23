@@ -7,6 +7,26 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+> ### Start Project 
+>
+> - #git clone https://github.com/kaudx-hub/laravel_vue_apollo.git
+> 
+> - #composer install
+> 
+> - #npm install
+> 
+> - #cp .env.example .env 
+> 
+> - Config .env file
+> 
+> - #php artisan migrate
+> 
+> - #php artisan db:seed
+> 
+> - #php artisan serve
+> 
+> - #npm run watch
+
 ## Text Editor
 [vue-quill-editor](https://github.com/surmon-china/vue-quill-editor)
 
