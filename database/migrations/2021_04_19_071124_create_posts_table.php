@@ -18,8 +18,8 @@ class CreatePostsTable extends Migration
             $table->longText('title');
             $table->longText('description');
             $table->boolean('status')->default(true);
-            $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('updated_by');
+            $table->bigInteger('created_by')->default(0);
+            $table->bigInteger('updated_by')->default(0);
             $table->timestamps();
         });
     }

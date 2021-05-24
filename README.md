@@ -7,33 +7,41 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-> ### Start Project 
->
-> - #git clone https://github.com/kaudx-hub/laravel_vue_apollo.git
-> 
-> - #composer install
-> 
-> - #npm install
-> 
-> - #cp .env.example .env 
-> 
-> - Config .env file
-> 
-> - #php artisan migrate
-> 
-> - #php artisan db:seed
-> 
-> - #php artisan serve
-> 
-> - #npm run watch
+## Start Project 
+```console
+git clone https://github.com/kaudx-hub/laravel_vue_apollo.git
+```
+```console 
+composer install
+``` 
+```console
+npm install
+```
+```console 
+cp .env.example .env 
+``` 
+Connect database on .env
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=Name
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+```console 
+php artisan migrate
+```
+```console
+php artisan db:seed
+```
+```console 
+php artisan serve
+```
+```console
+npm run watch
+```
 
 ## Text Editor
 [vue-quill-editor](https://github.com/surmon-china/vue-quill-editor)
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

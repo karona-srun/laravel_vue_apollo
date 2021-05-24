@@ -1,6 +1,10 @@
+import { apolloClient } from "../../apollo/index";
+
 import Vue from "vue";
 import Vuex from "vuex";
-import axios from 'axios'
+// import axios from 'axios'
+
+import { POSTS,FETCH_POST,CREATE_POST,UPDATE_POST,DELETE_POST, } from '../../graphql/post'
 
 Vue.use(Vuex)
 
@@ -17,45 +21,102 @@ const getters = {
     }
 };
 const actions = {
-    loadPosts({ commit }) {
-        axios.get("/api/posts")
-        .then(response => {
-            commit("setPosts", response.data.posts);
-        })
-        .catch();
+    loadPosts({
+        commit
+    }){
+        apolloClient.query({
+            query: POSTS
+        }).then(response => {
+            commit('setPosts',response.data.posts)
+            console.log('🚀🚀 loadPosts from actions');
+        });
     },
+
     getPostByID({ commit }, id){
-        axios.get("/api/posts/"+id)
-        .then(response => {
-            commit("setPost", response.data.post);
-        })
-        .catch();
+        apolloClient.query({
+            query: FETCH_POST,
+            variables:{
+                id: id
+            }
+        }).then(response => {
+            commit('setPost',response.data.post)
+        });
     },
+
     add({commit}, post){
-        axios.post("/api/posts",post)
-        .then(response => {
-            commit("addPost", response.data.post);
+        apolloClient.mutate({
+            mutation: CREATE_POST,
+            variables:{
+                ...post
+            }
+        }).then(response => {
+            commit("addPost", response.data.createPost);
         })
         .catch()
     },
     update({commit}, post){
-        axios.patch("/api/posts/"+post.id,post)
-        .then(response => {
-            commit("updatePost", response.data.post);
-        })
-        .catch()
+        apolloClient.mutate({
+            mutation: UPDATE_POST,
+            variables:{
+                ...post
+            }
+        }).then(response => {
+            commit("updatePost", response.data.updatePost);
+            
+        }).catch()
     },
     remove({commit}, id){
-        axios.delete("/api/posts/"+id)
-        .then(response => { 
+        apolloClient.mutate({
+            mutation: DELETE_POST,
+            variables:{
+                id
+            }
+        }).then(response => {
             commit('deletePost',id);
         })
         .catch()
-    }
+    },
+
+    // loadPosts({ commit }) {
+    //     axios.get("/api/posts")
+    //     .then(response => {
+    //         commit("setPosts", response.data.posts);
+    //     })
+    //     .catch();
+    // },
+    
+    // getPostByID({ commit }, id){
+    //     axios.get("/api/posts/"+id)
+    //     .then(response => {
+    //         commit("setPost", response.data.post);
+    //     })
+    //     .catch();
+    // },
+    // add({commit}, post){
+    //     axios.post("/api/posts",post)
+    //     .then(response => {
+    //         commit("addPost", response.data.post);
+    //     })
+    //     .catch()
+    // },
+    // update({commit}, post){
+    //     axios.patch("/api/posts/"+post.id,post)
+    //     .then(response => {
+    //         commit("updatePost", response.data.post);
+    //     })
+    //     .catch()
+    // },
+    // remove({commit}, id){
+    //     axios.delete("/api/posts/"+id)
+    //     .then(response => { 
+    //         commit('deletePost',id);
+    //     })
+    //     .catch()
+    // }
 };
 const mutations = {
-    setPosts(state, posts){ state.posts = posts},
-    setPost(state, post){ state.post = post},
+    setPosts(state, posts){ state.posts = posts },
+    setPost(state, post){ state.post = post },
     addPost(state, post){
         state.posts.push(post);
     },

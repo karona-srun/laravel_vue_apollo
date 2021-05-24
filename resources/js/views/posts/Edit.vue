@@ -3,10 +3,10 @@
     <h1 class="text-center">Edit Post 🖌️ <router-link :to="{ name: 'Post' }">List</router-link></h1>
     
     <div class="row justify-content-center">
-      <div class="col-sm-6">
+      <div class="col-sm-10">
         <form @submit.prevent="editPost">
           <div class="form-group">
-            <label>Title</label>
+            <label>Title<span class="text-danger">*</span></label>
             <input
               type="text"
               class="form-control"
@@ -15,7 +15,7 @@
             />
           </div>
           <div class="form-group">
-            <label>Description</label>
+            <label>Description<span class="text-danger">*</span></label>
             <quill-editor
             ref="QuillEditor"
             :options="editorOption"
@@ -25,8 +25,8 @@
           <div class="form-group">
               <label>Status</label>
               <select v-model="post.status" class="form-control">
-                  <option value="0">Draft</option>
-                  <option value="1">Published</option>
+                  <option :value='false'>Draft</option>
+                  <option :value='true'>Published</option>
               </select>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
@@ -50,7 +50,7 @@ export default {
         },
         title: '',
         description: '',
-        status: ''
+        status: false
       }
     },
     methods: {
@@ -63,6 +63,7 @@ export default {
           created_by: 1,
           updated_by: 1
         }
+        console.log(data);
         this.$store.dispatch('update', data)
         .then(responce =>{
           this.$router.push('/');
@@ -77,7 +78,7 @@ export default {
       ...mapGetters(['post'])
     },
     mounted() {
-      this.$store.dispatch("getPostByID",this.$route.params.id);
+      this.$store.dispatch("getPostByID", parseInt(this.$route.params.id));
     }
 };
 </script>
