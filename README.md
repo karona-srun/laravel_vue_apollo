@@ -20,6 +20,10 @@ npm install
 ```console 
 cp .env.example .env 
 ``` 
+```console 
+php artisan key:generate
+``` 
+
 Connect database on .env
 ```
 DB_CONNECTION=mysql
