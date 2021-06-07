@@ -13,6 +13,7 @@ import VueRouter from "vue-router";
 // import axios from "axios";
 import router from "./routes";
 import store from "./store";
+import VueSimpleAlert from "vue-simple-alert";
 
 import VueQuillEditor from 'vue-quill-editor';  // Text editor
 
@@ -25,7 +26,7 @@ Vue.config.productionTip = false
 
 Vue.use(VueRouter);
 // Vue.use(VueAxios, axios);
-
+Vue.use(VueSimpleAlert);
 Vue.use(VueQuillEditor, /* { default global options } */)
 
 const app = new Vue({

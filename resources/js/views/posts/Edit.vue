@@ -66,7 +66,14 @@ export default {
         console.log(data);
         this.$store.dispatch('update', data)
         .then(responce =>{
-          this.$router.push('/');
+          this.$alert(
+            "The post has been updated successfully.",
+            "Success",
+            "success"
+          ).then(() => {
+            console.log("Closed");
+            this.$router.push("/");
+          });
         })
         .catch()
       }

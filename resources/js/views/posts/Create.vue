@@ -49,7 +49,7 @@ export default {
         placeholder: "Write something...",
         theme: "snow",
       },
-      errors: []
+      errors: [],
     };
   },
   methods: {
@@ -63,18 +63,24 @@ export default {
       this.$store
         .dispatch("add", post)
         .then((responce) => {
-          this.$router.push("/");
+          this.$alert(
+            "The post has been created successfully.",
+            "Success",
+            "success"
+          ).then(() => {
+            console.log("Closed");
+            this.$router.push("/");
+          });
         })
-        .catch(e => {
+        .catch((e) => {
           console.error(e.message);
         });
-      
     },
   },
   computed: {
     editor() {
       return this.$refs.QuillEditor.quill;
     },
-  }
+  },
 };
 </script>
