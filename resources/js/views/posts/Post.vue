@@ -88,8 +88,14 @@ export default {
   },
   methods: {
     deletePost(id) {
-      this.$store.dispatch("remove", parseInt(id));
-      this.$store.dispatch("loadPosts");
+      this.$confirm("Do you want to delete the post?.", "Question", "warning")
+        .then((r) => {
+          this.$store.dispatch("remove", parseInt(id));
+          this.$store.dispatch("loadPosts");
+        })
+        .catch(() => {
+          console.log("OK not selected.");
+        });
     },
   },
 };
